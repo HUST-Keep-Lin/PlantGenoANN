@@ -17,6 +17,9 @@ With PlantGenoANN, you can perform end-to-end genome annotation with a single co
 ## ⚙️ Installation & Environment
 We recommend creating a fresh Conda environment for PlantGenoANN (Python 3.8+).
 
+## ⚙️ Installation & Environment
+We recommend creating a fresh Conda environment for PlantGenoANN (Python 3.8+).
+
 ```bash
 # 1. Create and activate conda environment
 conda create -n plantgenoann python=3.8
@@ -28,14 +31,19 @@ cd PlantGenoANN
 
 # 3. Install dependencies
 pip install -r requirements.txt
-## 🚀 Quick Start (Usage)
+
+🚀 Quick Start (Usage)
 To run the full annotation pipeline, use the run_annotator.py script. The pipeline will automatically handle sliding windows, multi-process model inference, and standard GFF3 assembly.
+
 Basic Command:
+
+Bash
 python run_annotator.py \
     -i path/to/your/genome.fasta \
     -m path/to/your/finetuned_model_directory \
     -o output_annotation.gff
-## 🛠️ Advanced Configuration (Optional)
+
+🛠️ Advanced Configuration (Optional)
 PlantGenoANN is highly customizable. You can adjust sliding windows, confidence thresholds, and hardware utilization to fit your specific needs:
 
 Hardware & Processing:
@@ -70,5 +78,5 @@ Filtering & Thresholds:
 
 For a full list of parameters, simply run python run_annotator.py --help.
 
-## 📜 License
-see the LICENSE file for details.
+📜 License
+This project is licensed under the MIT License - see the LICENSE file for details.
