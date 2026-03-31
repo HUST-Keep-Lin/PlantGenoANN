@@ -30,7 +30,6 @@ cd PlantGenoANN
 pip install -r requirements.txt
 🚀 Quick Start (Usage)
 To run the full annotation pipeline, use the run_annotator.py script. The pipeline will automatically handle sliding windows, multi-process model inference, and standard GFF3 assembly.
-
 Basic Command:
 python run_annotator.py \
     -i path/to/your/genome.fasta \
