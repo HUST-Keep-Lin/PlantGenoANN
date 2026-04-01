@@ -29,51 +29,40 @@ cd PlantGenoANN
 # 3. Install dependencies
 pip install -r requirements.txt
 
+
 ## 🚀 Quick Start (Usage)
-To run the full annotation pipeline, use the run_annotator.py script. The pipeline will automatically handle sliding windows, multi-process model inference, and standard GFF3 assembly.
+To run the full annotation pipeline, use the `run_annotator.py` script. The pipeline will automatically handle sliding windows, multi-process model inference, and standard GFF3 assembly.
 
-Basic Command:
-
-Bash
+**Basic Command:**
+```bash
 python run_annotator.py \
     -i path/to/your/genome.fasta \
     -m path/to/your/finetuned_model_directory \
     -o output_annotation.gff
+```
 
-🛠️ Advanced Configuration (Optional)
+## 🛠️ Advanced Configuration (Optional)
 PlantGenoANN is highly customizable. You can adjust sliding windows, confidence thresholds, and hardware utilization to fit your specific needs:
 
-Hardware & Processing:
+**Hardware & Processing:**
+* `--batch_size`: The number of samples in a batch (default: 8).
+* `--num_workers`: The number of CPU cores to load data in parallel (default: 8).
+* `--num_tokenize_threads`: Number of CPU cores used to tokenize the sequence (default: 24).
+* `--cache_path`: Specify the path to cache intermediate datasets (default: "auto").
 
---batch_size: The number of samples in a batch (default: 8).
+**Sequence & Window Settings:**
+* `--sliding_window_size`: Length of the sliding window used to segment the chromosome (default: 49152).
+* `--overlap_window_size`: Overlap length between consecutive windows (default: 6144).
+* `--min_chromosome_size`: Minimum chromosome size for annotating (default: 1000000).
 
---num_workers: The number of CPU cores to load data in parallel (default: 8).
+**Filtering & Thresholds:**
+* `--threshold`: Minimum probability threshold for valid nucleotides (default: 0.5).
+* `--min_gene_conf_score`: The lowest gene confidence score (default: 0.6).
+* `--min_intron_conf_score`: The lowest intron confidence score (default: 0.70).
+* `--min_cds_conf_score`: The lowest CDS confidence score (default: 0.70).
+* `--min_gene_length`, `--min_intron_length`, `--min_cds_length`: Filter out predicted elements shorter than these values.
 
---num_tokenize_threads: Number of CPU cores used to tokenize the sequence (default: 24).
+*For a full list of parameters, simply run `python run_annotator.py --help`.*
 
---cache_path: Specify the path to cache intermediate datasets (default: "auto").
-
-Sequence & Window Settings:
-
---sliding_window_size: Length of the sliding window used to segment the chromosome (default: 49152).
-
---overlap_window_size: Overlap length between consecutive windows (default: 6144).
-
---min_chromosome_size: Minimum chromosome size for annotating (default: 1000000).
-
-Filtering & Thresholds:
-
---threshold: Minimum probability threshold for valid nucleotides (default: 0.5).
-
---min_gene_conf_score: The lowest gene confidence score (default: 0.6).
-
---min_intron_conf_score: The lowest intron confidence score (default: 0.70).
-
---min_cds_conf_score: The lowest CDS confidence score (default: 0.70).
-
---min_gene_length, --min_intron_length, --min_cds_length: Filter out predicted elements shorter than these values.
-
-For a full list of parameters, simply run python run_annotator.py --help.
-
-📜 License
+## 📜 License
 This project is licensed under the MIT License - see the LICENSE file for details.
