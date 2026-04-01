@@ -17,7 +17,7 @@ With PlantGenoANN, you can perform end-to-end genome annotation with a single co
 ## ⚙️ Installation & Environment
 We recommend creating a fresh Conda environment for PlantGenoANN (Python 3.8+).
 
-bash
+```bash
 #1. Create and activate conda environment
 conda create -n plantgenoann python=3.8
 conda activate plantgenoann
@@ -28,6 +28,7 @@ cd PlantGenoANN
 
 #3. Install dependencies
 pip install -r requirements.txt
+```
 
 
 ## 🚀 Quick Start (Usage)
