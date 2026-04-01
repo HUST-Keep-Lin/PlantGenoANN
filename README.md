@@ -18,15 +18,15 @@ With PlantGenoANN, you can perform end-to-end genome annotation with a single co
 We recommend creating a fresh Conda environment for PlantGenoANN (Python 3.8+).
 
 ```bash
-#1. Create and activate conda environment
+# 1. Create and activate conda environment
 conda create -n plantgenoann python=3.8
 conda activate plantgenoann
 
-#2. Clone the repository
+# 2. Clone the repository
 git clone [https://github.com/Your-Org/PlantGenoANN.git](https://github.com/Your-Org/PlantGenoANN.git)
 cd PlantGenoANN
 
-#3. Install dependencies
+# 3. Install dependencies
 pip install -r requirements.txt
 ```
 
@@ -66,4 +66,4 @@ PlantGenoANN is highly customizable. You can adjust sliding windows, confidence 
 *For a full list of parameters, simply run `python run_annotator.py --help`.*
 
 ## 📜 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+See the LICENSE file for details.
