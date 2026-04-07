@@ -32,14 +32,14 @@ cd PlantGenoANN
 # 3. Install dependencies
 pip install -r requirements.txt
 ```
+The model requires the `mamba-ssm` and `causal-conv1d` libraries for the core backbone.
 
-Markdown
 ## 🚀 Quick Start (Usage)
 
 You can use PlantGenoANN in two ways: by directly interacting with the model in Python for sequence analysis, or by running the complete pipeline script to generate standard annotation files.
 
 ### 1. Direct Model Inference (Python)
-The model requires the `mamba-ssm` and `causal-conv1d` libraries for the core backbone. You can retrieve both genomic feature probabilities and sequence embeddings using the following snippet:
+You can retrieve both genomic feature probabilities and sequence embeddings using the following snippet:
 
 ```python
 import torch
