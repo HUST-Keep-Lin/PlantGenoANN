@@ -1,7 +1,7 @@
 # PlantGenoANN: Plant Genome Annotation Pipeline
 
 [![Hugging Face Model](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-yellow)](https://huggingface.co/qzzhang/PlantGenoANN)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## 📖 Introduction
 **PlantGenoANN** is a high-performance plant genomic segmentation model designed for predicting genomic elements at single-nucleotide resolution. Built upon the **PlantBiMoE** architecture with a 1D U-Net segmentation head, it automates the annotation of gene structures—including genes, CDSs, and exons—on both forward and reverse strands. 
