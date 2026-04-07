@@ -26,7 +26,7 @@ class SequenceTokenizer:
         try:
             # Load dataset from TSV
             raw_dataset = load_dataset("csv", data_files={"data": tsv_path}, split="data")
-            tokenizer = AutoTokenizer.from_pretrained()
+            tokenizer = AutoTokenizer.from_pretrained(self.config.model_path, trust_remote_code=True)
             
             # Determine optimal batch size and number of processes
             effective_batch_size = self.config.chunk_size
