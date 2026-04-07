@@ -35,6 +35,57 @@ pip install -r requirements.txt
 
 
 ## 🚀 Quick Start (Usage)
+没问题，这样你点击一次右上角的“复制”按钮就可以全部带走了。你可以直接将下面的全部内容粘贴到你的 README.md 文件中：
+
+Markdown
+## 🚀 Quick Start (Usage)
+
+You can use PlantGenoANN in two ways: by directly interacting with the model in Python for sequence analysis, or by running the complete pipeline script to generate standard annotation files.
+
+### 1. Direct Model Inference (Python)
+The model requires the `mamba-ssm` and `causal-conv1d` libraries for the core backbone. You can retrieve both genomic feature probabilities and sequence embeddings using the following snippet:
+
+```python
+import torch
+from transformers import AutoTokenizer, AutoModel
+
+# Load model and tokenizer
+repo_id = "qzzhang/PlantGenoANN"
+tokenizer = AutoTokenizer.from_pretrained(repo_id, trust_remote_code=True)
+model = AutoModel.from_pretrained(repo_id, trust_remote_code=True)
+
+# The number of DNA tokens (excluding the [CLS] and [SEP] token) needs to be divisible by 8 
+# as required by the U-Net downsampling blocks. 
+sequences = ["ACTAGAGCGAGAGAAA","TTTGAGAGCGCGCGGA"] 
+
+# Tokenize
+tokenized_sequences = tokenizer(
+    sequences, 
+    return_tensors="pt", 
+    padding="longest"
+)["input_ids"]
+
+# Infer
+model.to("cuda")
+model.eval()
+with torch.no_grad():
+    outs = model(input_ids=tokenized_sequences.to("cuda"))
+
+# Obtain the logits over the genomic features
+# Shape: [batch, sequence_length, num_features]
+logits = outs.logits
+
+# Get probabilities associated with CDS on the forward strand (+)
+pos_strand_cds_probs = model.get_feature_logits("CDS", "+", logits).detach()
+print(f"CDS probabilities on the forward strand: {pos_strand_cds_probs}")
+
+# Get the sequence embeddings
+# Shape: [batch, sequence_length, 1024]
+hidden_states = outs.hidden_states.detach()
+print(f"Sequence embeddings shape is: {hidden_states.shape}")
+```
+
+### 2. Full Annotation Pipeline (CLI)
 To run the full annotation pipeline, use the `run_annotator.py` script. The pipeline will automatically handle sliding windows, multi-process model inference, and standard GFF3 assembly.
 
 **Basic Command:**
@@ -44,6 +95,7 @@ python run_annotator.py \
     -m /path/to/your/pretrained_model_directory \
     -o output_annotation.gff3
 ```
+
 
 ## 🛠️ Advanced Configuration (Optional)
 PlantGenoANN is highly customizable. You can adjust sliding windows, confidence thresholds, and hardware utilization to fit your specific needs:
