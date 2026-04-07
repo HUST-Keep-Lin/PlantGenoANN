@@ -9,7 +9,7 @@
 Beyond standard annotation, PlantGenoANN serves as a **foundation model**, adaptable via fine-tuning to predict diverse omic signal tracks such as RNA-seq and ATAC-seq.
 
 ## 🤗 Model Access
-The pre-trained and fine-tuned weights for PlantGenoANN are hosted on Hugging Face:
+The pre-trained weights for PlantGenoANN are hosted on Hugging Face:
 * **Model Hub:** [qzzhang/PlantGenoANN](https://huggingface.co/qzzhang/PlantGenoANN)
 
 ---
