@@ -20,7 +20,7 @@ def main():
                         help="The size of the chunks processed by annotator model.")
     parser.add_argument("--batch_size", type=int, default=8, 
                         help="The number of samples in a batch.")
-    parser.add_argument("--num_tokenize_threads", type=int, default=24, 
+    parser.add_argument("--num_tokenize_threads", type=int, default=16, 
                         help="Number of CPU cores used to tokenize the sequence.")
     parser.add_argument("--num_workers", type=int, default=8, 
                         help="The number of CPU cores to load data in parallel")
@@ -32,7 +32,7 @@ def main():
                         help="The overlap length between two consecutive sliding windows.")
     parser.add_argument("--min_chromosome_size", type=int, default=1000000, 
                         help="Minimum chromosome size for annotating. The size below this value will not be annotate in given FA/FNA files.")
-    parser.add_argument("--threshold", type=float, default=0.5,
+    parser.add_argument("--threshold", type=float, default=0.50,
                         help="The minimum threshold of probability when judging whether a nucleotide is valid.")
     parser.add_argument("--min_gene_length", type=int, default=60,
                         help="The shortest gene length. Gene lengths below this value will be filtered out.")
@@ -40,9 +40,9 @@ def main():
                         help="The shortest intron length. Intron lengths below this value will be filtered out.")
     parser.add_argument("--min_cds_length", type=int, default=9,
                         help="The shortest CDS length. CDS lengths below this value will be filtered out.")
-    parser.add_argument("--min_gene_conf_score", type=float, default=0.6, help="The lowest gene confidence score.")
-    parser.add_argument("--min_intron_conf_score", type=float, default=0.70, help="The lowest intron confidence score.")
-    parser.add_argument("--min_cds_conf_score", type=float, default=0.70, help="The lowest CDS confidence score.")
+    parser.add_argument("--min_gene_conf_score", type=float, default=0.50, help="The lowest gene confidence score.")
+    parser.add_argument("--min_intron_conf_score", type=float, default=0.50, help="The lowest intron confidence score.")
+    parser.add_argument("--min_cds_conf_score", type=float, default=0.50, help="The lowest CDS confidence score.")
     args = parser.parse_args()
     
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
